@@ -1,0 +1,13 @@
+// Intersection Observer untuk animasi scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    } else {
+      // supaya animasi muncul lagi saat scroll ke atas
+      entry.target.classList.remove("active");
+    }
+  });
+}, { threshold: 0.25 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
